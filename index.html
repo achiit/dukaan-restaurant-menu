@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ali Restaurant</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#eceee6;--panel:#fbfaf5;--ink:#1b2a22;--mute:#58655d;--brass:#8a6618;--wine:#7a2230;--wine-ink:#fff;--line:#cfd3c6;--board:#17241d;--chalk:#efe9d8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a15;--panel:#18251e;--ink:#ece6d6;--mute:#a3ada4;--brass:#d1ab57;--wine:#b94659;--line:#2c3b32;--board:#0b120e}}
+:root[data-theme="dark"]{--bg:#101a15;--panel:#18251e;--ink:#ece6d6;--mute:#a3ada4;--brass:#d1ab57;--wine:#b94659;--line:#2c3b32;--board:#0b120e}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Karla,system-ui,sans-serif;padding-bottom:70px}
+h1,h2,h3{font-family:"IM Fell English",Georgia,serif;font-weight:400;line-height:1.15;margin:0}
+h2{font-size:2rem;margin-bottom:.4rem}
+a{color:inherit}
+.wrap{max-width:960px;margin:0 auto;padding:0 18px}
+section{padding:46px 0;border-top:1px solid var(--line)}
+.sub{color:var(--mute);max-width:60ch;margin:0 0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:54px}
+nav b{font-family:"IM Fell English",serif;font-size:1.3rem;font-weight:400}
+nav .links{display:flex;gap:16px;font-size:.95rem;overflow-x:auto;white-space:nowrap}
+nav .links a{text-decoration:none;color:var(--mute)}
+.hero{background:var(--board);color:var(--chalk);padding:56px 0 48px;border:0}
+.hero h1{font-size:clamp(2.6rem,9vw,5rem);letter-spacing:.01em}
+.hero p{max-width:50ch;color:#cfc8b4;margin:14px 0 22px}
+.status{display:inline-block;border:1px solid #4b5d52;border-radius:99px;padding:4px 14px;font-size:.9rem;margin-bottom:18px}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;background:#d1ab57}
+.btn{display:inline-block;border:0;border-radius:6px;padding:12px 20px;font:700 1rem Karla,sans-serif;cursor:pointer;text-decoration:none;background:var(--wine);color:var(--wine-ink);min-height:44px}
+.btn.alt{background:transparent;color:inherit;border:1.5px solid currentColor}
+.btn:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,.chip:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.board{background:var(--board);color:var(--chalk);border:6px solid #5a4222;border-radius:4px;padding:20px 22px;margin-top:30px;max-width:520px}
+.board h3{font-size:1.5rem;margin-bottom:8px;color:#e8c777}
+.board ul{margin:0;padding:0;list-style:none}.board li{display:flex;justify-content:space-between;gap:14px;border-bottom:1px dashed #4b5d52;padding:6px 0}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.chip{border:1.5px solid var(--line);background:var(--panel);color:var(--ink);border-radius:99px;padding:7px 14px;font:600 .92rem Karla;cursor:pointer;min-height:40px}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.grid{display:grid;grid-template-columns:1fr;gap:0}
+.item{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.item h3{font-size:1.2rem}.item p{margin:2px 0 0;color:var(--mute);font-size:.95rem}
+.tag{font-size:.78rem;border:1px solid var(--brass);color:var(--brass);border-radius:4px;padding:0 6px;margin-left:6px;white-space:nowrap}
+.price{font-weight:700;white-space:nowrap}
+.add{margin-top:6px;background:none;border:1.5px solid var(--wine);color:var(--wine);border-radius:6px;padding:6px 14px;font:700 .9rem Karla;cursor:pointer;min-height:40px}
+.cols{display:grid;gap:28px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:20px}
+label{display:block;font-weight:600;margin:12px 0 4px}
+input,select,textarea{width:100%;font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:6px;background:var(--bg);color:var(--ink);min-height:44px}
+.row{display:flex;gap:10px}.row>*{flex:1}
+.ok{margin-top:14px;padding:12px 14px;border-left:4px solid var(--brass);background:var(--bg)}
+.cart-line{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.cart-line button{border:0;background:none;color:var(--wine);font-weight:700;cursor:pointer;padding:6px 10px;min-height:36px}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;background:var(--board);padding-bottom:env(safe-area-inset-bottom,0px)}
+.bar a{flex:1;text-align:center;color:var(--chalk);text-decoration:none;padding:14px 4px;font-weight:700;font-size:.92rem;border-right:1px solid #2c3b32}
+.wa{position:fixed;right:14px;bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:7;background:#1f8f4e;color:#fff;text-decoration:none;font-weight:700;padding:12px 16px;border-radius:99px;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+@media(min-width:760px){.wa{bottom:20px}}
+footer{padding:30px 0 20px;color:var(--mute);font-size:.9rem}
+@media(min-width:760px){.grid{grid-template-columns:1fr 1fr;column-gap:40px}.cols{grid-template-columns:1fr 1fr}.bar{display:none}body{padding-bottom:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head><body>
+<nav><div class="wrap"><b>Ali Restaurant</b><div class="links"><a href="#menu">Menu</a><a href="#order">Order</a><a href="#book">Book a table</a><a href="#events">Events</a><a href="#about">About</a><a href="#visit">Visit</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="status"><span class="dot"></span><span id="stxt">Checking hours...</span></div>
+<h1>Ali<br>Restaurant</h1>
+<p>Freshly cooked food, made with care. Dine in, take away, or order on WhatsApp in a few taps.</p>
+<a class="btn" href="#menu">See the menu</a> <a class="btn alt" href="#book">Book a table</a>
+<div class="board"><h3>Today at Ali Restaurant</h3><ul>
+<li><span>Biryani, kebabs and curries</span><span>Fresh daily</span></li>
+<li><span>Takeaway on WhatsApp</span><span>Order in 2 min</span></li>
+<li><span>Family tables and parties</span><span>Book ahead</span></li></ul></div>
+</div></header>
+
+<section id="menu"><div class="wrap">
+<h2>Menu</h2><p class="sub">Filter by veg or non-veg. Tap Add to build a takeaway order. Prices shown are samples.</p>
+<div class="chips" id="chips" role="group" aria-label="Menu filters"></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="order"><div class="wrap cols">
+<div><h2>Order takeaway</h2><p class="sub">Add dishes from the menu, choose a pickup time, and send your order on WhatsApp. The restaurant will confirm it there. Pay by cash or UPI at pickup.</p></div>
+<div class="card"><div id="cart"></div>
+<form id="orderForm" hidden onsubmit="return placeOrder(event)">
+<label for="pt">Pickup time</label><select id="pt"></select>
+<label for="on">Name</label><input id="on" required autocomplete="name">
+<label for="op">Phone</label><input id="op" type="tel" required autocomplete="tel">
+<p style="margin:14px 0 0"><button class="btn" type="submit">Send order on WhatsApp</button></p></form>
+<div id="orderOk"></div></div>
+</div></section>
+
+<section id="book"><div class="wrap cols">
+<div><h2>Book a table</h2><p class="sub">Choose a date, time and number of guests. Your request goes to us on WhatsApp and we will confirm it.</p></div>
+<div class="card"><form onsubmit="return bk(event)">
+<label for="bn">Name</label><input id="bn" required autocomplete="name">
+<label for="bp">Phone</label><input id="bp" type="tel" required autocomplete="tel">
+<div class="row"><div><label for="bd">Date</label><input id="bd" type="date" required></div><div><label for="bt">Time</label><input id="bt" type="time" required value="20:00"></div></div>
+<label for="bg">Guests</label><select id="bg"></select>
+<p style="margin:14px 0 0"><button class="btn" type="submit">Request table on WhatsApp</button></p></form><div id="bkOk"></div></div>
+</div></section>
+
+<section id="events"><div class="wrap cols">
+<div><h2>Parties and events</h2><p class="sub">Birthdays, family get-togethers, office lunches and catering. Tell us the date and number of guests and we will reply with a plan and quote.</p></div>
+<div class="card"><form onsubmit="return pq(event)">
+<label for="pn">Name</label><input id="pn" required>
+<label for="pph">Phone</label><input id="pph" type="tel" required>
+<div class="row"><div><label for="pd">Date</label><input id="pd" type="date" required></div><div><label for="pc">Guests</label><input id="pc" type="number" min="8" value="20" required></div></div>
+<label for="pm">Tell us about the event</label><textarea id="pm" rows="3"></textarea>
+<p style="margin:14px 0 0"><button class="btn" type="submit">Send inquiry on WhatsApp</button></p></form><div id="pqOk"></div></div>
+</div></section>
+
+<section id="about"><div class="wrap">
+<h2>About us</h2>
+<p class="sub" style="max-width:62ch">Ali Restaurant is built around simple things: fresh ingredients, honest prices, and food cooked the way it should be. Come in with family and friends, pick up a quick takeaway, or message us on WhatsApp and we will have your order ready.</p>
+</div></section>
+
+<section id="visit"><div class="wrap cols">
+<div><h2>Visit us</h2><p><b id="addr"></b><br>
+<a href="tel:+917002657047">+91 70026 57047</a></p>
+<p>Open daily, 11:00 AM to 11:00 PM</p>
+<p><a class="btn" id="dir" href="#">Get directions</a> <a class="btn alt" href="tel:+917002657047">Call us</a></p></div>
+<div class="card"><h3 style="margin-bottom:8px">Order on WhatsApp</h3><p style="margin:0 0 12px">Message us anytime during opening hours for takeaway, table bookings and event questions.</p><a class="btn" id="wa2" href="#">Chat on WhatsApp</a></div>
+</div></section>
+
+<footer><div class="wrap">Ali Restaurant. Menu items and prices shown are samples and will be updated with the restaurant's actual menu.</div></footer>
+<div class="bar"><a href="#menu">Menu</a><a href="#order">Order</a><a href="#book">Book</a><a href="tel:+917002657047">Call</a></div>
+<a class="wa" href="#" id="wa">Order on WhatsApp</a>
+
+<script>
+/* ===== SETTINGS ===== whatsapp: country code + number, digits only */
+const CFG={whatsapp:"917002657047",address:"Add restaurant address here"};
+const M=[
+["Starters","Chicken tikka","Charcoal grilled, mint chutney",220,"N"],
+["Starters","Paneer tikka","Marinated and grilled",200,"V"],
+["Starters","Veg manchurian","Crispy, tossed in sauce",150,"VS"],
+["Starters","Fish fry","Crisp and spiced",260,"N"],
+["Biryani and Rice","Chicken biryani","Fragrant rice, tender chicken, raita",220,"N"],
+["Biryani and Rice","Mutton biryani","Slow cooked, served with raita",320,"N"],
+["Biryani and Rice","Veg biryani","Seasonal vegetables and spices",160,"V"],
+["Biryani and Rice","Jeera rice","Simple and light",100,"V"],
+["Main Course","Butter chicken","Creamy tomato gravy",280,"N"],
+["Main Course","Mutton rogan josh","Rich and aromatic",350,"N"],
+["Main Course","Paneer butter masala","Soft paneer, buttery gravy",220,"V"],
+["Main Course","Dal tadka","Yellow dal with garlic tadka",140,"V"],
+["Breads","Butter naan","Fresh from the tandoor",40,"V"],
+["Breads","Tandoori roti","Whole wheat",15,"V"],
+["Breads","Paratha","Layered and crisp",30,"V"],
+["Desserts and Drinks","Gulab jamun","Two pieces, warm",60,"V"],
+["Desserts and Drinks","Sweet lassi","Thick and chilled",70,"V"],
+["Desserts and Drinks","Masala chai","Freshly brewed",25,"V"]];
+let flt="All",cart={};
+const cats=["All","Veg","Non-veg",...new Set(M.map(m=>m[0]))];
+const $=id=>document.getElementById(id);
+const R=n=>"\u20b9"+n;
+function waLink(t){return "https://wa.me/"+CFG.whatsapp+"?text="+encodeURIComponent(t)}
+function waOpen(t,box,msg){const u=waLink(t);window.open(u,"_blank","noopener");$(box).innerHTML=`<div class="ok">${msg}<br><a href="${u}" target="_blank" rel="noopener"><b>Tap here if WhatsApp did not open</b></a></div>`}
+function chips(){$("chips").innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c==flt}" onclick="setF('${c}')">${c}</button>`).join("")}
+function setF(c){flt=c;chips();draw()}
+function tags(t){return (t.includes("V")?'<span class="tag">Veg</span>':'<span class="tag">Non-veg</span>')+(t.includes("S")?'<span class="tag">Spicy</span>':'')}
+function draw(){
+ $("grid").innerHTML=M.map((m,i)=>[m,i]).filter(([m])=>flt=="All"||m[0]==flt||(flt=="Veg"&&m[4].includes("V"))||(flt=="Non-veg"&&m[4].includes("N")))
+ .map(([m,i])=>`<div class="item"><div><h3>${m[1]}${tags(m[4])}</h3><p>${m[2]}</p><button class="add" onclick="add(${i})">Add</button></div><div class="price">${R(m[3])}</div></div>`).join("")}
+function add(i){cart[i]=(cart[i]||0)+1;drawCart()}
+function rem(i){if(--cart[i]<=0)delete cart[i];drawCart()}
+function drawCart(){
+ const k=Object.keys(cart);$("orderOk").innerHTML="";
+ if(!k.length){$("cart").innerHTML='<p style="color:var(--mute);margin:0">Your cart is empty. Tap "Add" on any menu item.</p>';$("orderForm").hidden=true;return}
+ let t=0;$("cart").innerHTML=k.map(i=>{t+=M[i][3]*cart[i];return `<div class="cart-line"><span>${cart[i]} x ${M[i][1]}</span><span>${R(M[i][3]*cart[i])} <button onclick="rem(${i})" aria-label="Remove one ${M[i][1]}">Remove</button></span></div>`}).join("")+`<p style="font-weight:700;text-align:right;margin:10px 0 0">Total ${R(t)}</p>`;
+ $("orderForm").hidden=false}
+function placeOrder(e){e.preventDefault();
+ const k=Object.keys(cart);let t=0;const lines=k.map(i=>{t+=M[i][3]*cart[i];return `${cart[i]} x ${M[i][1]} (${R(M[i][3]*cart[i])})`});
+ waOpen(`Hello Ali Restaurant! Takeaway order\n${lines.join("\n")}\nTotal: ${R(t)}\nPickup: ${$("pt").value}\nName: ${$("on").value}\nPhone: ${$("op").value}`,"orderOk","Your order is ready to send. Press Send in WhatsApp to confirm.");return false}
+function bk(e){e.preventDefault();
+ waOpen(`Hello Ali Restaurant! Table booking request\nName: ${$("bn").value}\nPhone: ${$("bp").value}\nDate: ${$("bd").value}\nTime: ${$("bt").value}\nGuests: ${$("bg").value}`,"bkOk","Press Send in WhatsApp. We will confirm your table.");return false}
+function pq(e){e.preventDefault();
+ waOpen(`Hello Ali Restaurant! Event inquiry\nName: ${$("pn").value}\nPhone: ${$("pph").value}\nDate: ${$("pd").value}\nGuests: ${$("pc").value}\nDetails: ${$("pm").value}`,"pqOk","Press Send in WhatsApp to send your inquiry.");return false}
+$("bg").innerHTML=[1,2,3,4,5,6,7,8].map(n=>`<option>${n}</option>`).join("");
+const today=new Date().toISOString().slice(0,10);$("bd").min=today;$("pd").min=today;
+(function(){const s=[],n=new Date();n.setMinutes(Math.ceil((n.getMinutes()+25)/15)*15,0,0);
+ for(let i=0;i<8;i++){s.push(n.toLocaleTimeString([],{hour:"numeric",minute:"2-digit"}));n.setMinutes(n.getMinutes()+15)}
+ $("pt").innerHTML=s.map(x=>`<option>${x}</option>`).join("")})();
+(function(){const h=new Date().getHours();$("stxt").textContent=(h>=11&&h<23)?"Open now, until 11 PM":"Closed now, opens 11 AM"})();
+$("addr").textContent=CFG.address;
+$("dir").href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("Ali Restaurant "+CFG.address);
+const hi=waLink("Hello Ali Restaurant!");$("wa").href=hi;$("wa").target="_blank";$("wa2").href=hi;$("wa2").target="_blank";
+chips();draw();drawCart();
+</script></body></html>
